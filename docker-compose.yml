@@ -24,6 +24,8 @@ services:
     ports:
       - 9200:9200
     restart: on-failure
+    volumes:
+      - data01:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
@@ -32,3 +34,6 @@ services:
         interval: 10s
         timeout: 1s
         retries: 10
+volumes:
+  data01:
+    driver: local
